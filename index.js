@@ -2,6 +2,8 @@ const fs = require("fs");
 const cors = require("cors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const chatGPT = require("./functions/gpt-instruct");
+
 require("dotenv").config();
 
 const app = express();
@@ -31,6 +33,7 @@ app.use("/find-text-in-image", findTextInImage);
 
 //endpoint home
 app.get("/", (req, res) => {
+  chatGPT("what are some theories on what is one piece?");
   res.status(200).send("Image to Text is actively listening");
 });
 
